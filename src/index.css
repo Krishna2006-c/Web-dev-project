@@ -1,0 +1,529 @@
+/* =============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #f4f7fc;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+/* =============================================
+   APP LAYOUT (SIDEBAR + MAIN)
+   ============================================= */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+  padding: 2rem 1.5rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+}
+
+.sidebar .logo h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.sidebar .logo p {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+.sidebar .menu {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.sidebar .menu li {
+  margin: 1rem 0;
+}
+
+.sidebar .menu a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.sidebar .menu a:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  transform: translateX(4px);
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  overflow-x: auto;
+}
+
+/* =============================================
+   TOP BAR (Search + Login)
+   ============================================= */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search-wrapper input {
+  padding: 0.7rem 1.2rem;
+  border-radius: 40px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  width: 280px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.search-wrapper input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-name {
+  font-weight: 600;
+  background: #e2e8f0;
+  padding: 0.4rem 1rem;
+  border-radius: 40px;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 40px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #64748b;
+  color: white;
+}
+.btn-secondary:hover {
+  background: #475569;
+}
+
+.btn-success {
+  background: #10b981;
+  color: white;
+}
+.btn-success:hover {
+  background: #059669;
+}
+
+.btn-warning {
+  background: #f59e0b;
+  color: white;
+}
+.btn-warning:hover {
+  background: #d97706;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+}
+.btn-outline:hover {
+  background: #f1f5f9;
+}
+
+/* =============================================
+   VIDEO BANNER
+   ============================================= */
+.banner {
+  position: relative;
+  height: 280px;
+  border-radius: 28px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+}
+
+.banner video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.banner-overlay h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* =============================================
+   CARDS & STATISTICS
+   ============================================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* =============================================
+   BOOK GRID & CARDS
+   ============================================= */
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem 0;
+  color: #0f172a;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.8rem;
+  margin-top: 1.5rem;
+}
+
+.book-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.2rem;
+  transition: all 0.25s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  border: 1px solid #e2e8f0;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+  border-color: #cbd5e1;
+}
+
+.book-card h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.book-author {
+  color: #475569;
+  font-size: 0.85rem;
+  margin: 0.3rem 0;
+}
+
+.book-isbn {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.status-badge.available {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge.issued {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.book-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* =============================================
+   FILTER BAR
+   ============================================= */
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+  flex-wrap: wrap;
+}
+
+.search-input, select {
+  padding: 0.6rem 1rem;
+  border-radius: 40px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  font-size: 0.9rem;
+}
+
+/* =============================================
+   NOTIFICATIONS
+   ============================================= */
+.notifications-list {
+  background: white;
+  border-radius: 24px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.notification-item {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #64748b;
+}
+
+/* =============================================
+   MEMBERS GRID
+   ============================================= */
+.members-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.member-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.member-avatar {
+  font-size: 2.5rem;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-info h3 {
+  font-size: 1.2rem;
+}
+
+/* =============================================
+   MODAL (LOGIN / ADD BOOK / ADD MEMBER)
+   ============================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 32px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 25px 40px rgba(0,0,0,0.2);
+}
+
+.modal-box h2 {
+  margin-bottom: 1.5rem;
+}
+
+.modal-box input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 16px;
+  border: 1px solid #cbd5e1;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* =============================================
+   SETTINGS PAGE
+   ============================================= */
+.settings-card {
+  background: white;
+  border-radius: 24px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  align-items: center;
+}
+
+.coming-soon {
+  font-size: 0.7rem;
+  background: #f1f5f9;
+  padding: 0.2rem 0.8rem;
+  border-radius: 30px;
+  color: #475569;
+}
+
+/* =============================================
+   PAGE HEADER (Title + Action Button)
+   ============================================= */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    padding: 1rem 0.5rem;
+  }
+  .sidebar .logo h2, .sidebar .logo p, .sidebar .menu a span:not(.emoji) {
+    display: none;
+  }
+  .sidebar .menu a {
+    justify-content: center;
+  }
+  .main-content {
+    padding: 1rem;
+  }
+  .banner-overlay h1 {
+    font-size: 1.2rem;
+  }
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
